@@ -25,20 +25,52 @@
 *     Functions     *
 ********************/
 
+/**
+* Return an array with inverted arguments
+*/
+function invertArguments(arrayArguments){
+  let result = [];
+  for(let i=arrayArguments.length-1; i>=0; i--){
+    result.push(arrayArguments[i]);
+  }
+  return result;
+}
+
+/**
+* Display the inverted argunent results, one element by line
+*/
+function displayResult(result){
+  result.forEach((item, i) => {
+    console.log(item);
+  });
+
+}
 /********************
 *   Error Handling  *
 ********************/
+const errorMissingArguments = new Error("Arguments are missing.");
+
+function isArgumenMissing(args){
+  return(args.length<=0);
+}
 
 /********************
 *      Parsing      *
 ********************/
-const { argv } = process.argv;
+const args = process.argv.slice(2);
+let result = [];
 
 /********************
 *        Main       *
 ********************/
+if(isArgumenMissing(args)){
+  console.log(errorMissingArguments.message);
+  process.exit();
+} else {
+  result = invertArguments(args);
+}
 
 /********************
 *       Result      *
 ********************/
-console.log(argv);
+displayResult(result);
