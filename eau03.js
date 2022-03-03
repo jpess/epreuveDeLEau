@@ -21,16 +21,12 @@
 * Recursive function that return the Fibonacci element at the index passed in argument
 */
 function getFibonacciElementByIndex(index){
-  switch (index) {
-    case 0:
-      return 0;
-      break;
-    case 1:
-      return 1;
-      break;
-    default:
-      return getFibonacciElementByIndex(index - 1) + getFibonacciElementByIndex(index - 2);
-      break;
+  if(index <= 0){
+    return 0;
+  } else if (index == 1) {
+    return 1;
+  } else {
+    return getFibonacciElementByIndex(index - 1) + getFibonacciElementByIndex(index - 2);
   }
 }
 
